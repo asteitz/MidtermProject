@@ -27,17 +27,6 @@ Safeargs and View Groups were implemented to transfer data from MainActivity.kt 
 <br>
 **START** 
 <br>
-* [Add Note] -> [TITLE:Names ] [Typed: Ashley, Jacob, Anna, Clarissa, Jenna, John, Kyle] [SAVE]
-* [Add Note] -> [TITLE:Cities] [Typed: New York, Miami, Seattle, Chicago, Paris, Madrid, Copenhagen] [BACK] 
-* [Add Note]  -> [TITLE:Food] [Typed: Pizza, Hot Dog, Popcorn, Salad, Fruit, Vegtable, Pasta, Hummus ] [SAVE]
-* [Cities]  -> [TITLE:Cities] [Typed: New York, Miami, Seattle ] [SAVE]
-* [Add Note] -> [TITLE:Animals]  [Typed: Cat, Dog, Elepant, Snake, Zebra ] [SAVE]
-* [Add Note]  -> [TITLE:Hello] [Typed: Hi, Aloha, Hola, Bonjour, Ni Hao, Halo ] [SAVE] 
-* [Animals] -> [TITLE:Animals]  [Typed: Cat] [BACK]
-* [Cities] [BACK]
-* [Animals] [BACK]
-* [Add Note]  -> [TITLE:Classes] [Typed: C322, C323, B461, D351, D321, C343, C200 ] [DELETE] 
-<br>
 
 **END**
 
