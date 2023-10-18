@@ -14,6 +14,7 @@ class NotesViewModel(val dao: NoteDao) : ViewModel() {
     val navigateToNote: LiveData<Long?>
         get() = _navigateToNote
 
+
     fun addNote() {
         viewModelScope.launch {
             var note = Note()
@@ -30,6 +31,7 @@ class NotesViewModel(val dao: NoteDao) : ViewModel() {
 
         }
     }
+
 
     fun onNoteClicked(noteId: Long) {
         _navigateToNote.value = noteId

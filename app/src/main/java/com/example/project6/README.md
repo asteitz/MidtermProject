@@ -73,6 +73,7 @@ Backend Challenges:
 - Difficult time with the gradle files and versions not being compatible
 - Struggled integrating the SQL database into the calls when a button is pressed
 - Working with an adapter to communicate between the view model and the database
+- Debugging an issue where our value wasn't being stored in our table despite calling insert to our database
 
 ## License
 

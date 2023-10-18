@@ -7,12 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavGraph
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.example.project6.databinding.FragmentNotesBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -29,6 +26,7 @@ class NotesFragment : Fragment() {
     val TAG = "NotesFragment"
     private var _binding: FragmentNotesBinding? = null
     private val binding get() = _binding!!
+    var guesses = 0;
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,8 +41,9 @@ class NotesFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        fun noteClicked (noteId : Long) {
-            viewModel.onNoteClicked(noteId)
+        fun okClicked (binding: FragmentNotesBinding) {
+            viewModel.addNote()
+            guesses = guesses + 1
         }
         fun yesPressed(noteId : Long) {
             Log.d(TAG, "in yesPressed(): noteId = $noteId")
@@ -54,7 +53,7 @@ class NotesFragment : Fragment() {
             DeleteDialog(noteId,::yesPressed).show(childFragmentManager,
                 DeleteDialog.TAG)
         }
-        val adapter = NotesAdapter(::noteClicked,::deleteClicked)
+        val adapter = NotesAdapter(::okClicked,::deleteClicked)
 
         binding.notesList.adapter = adapter
 
@@ -66,7 +65,7 @@ class NotesFragment : Fragment() {
         viewModel.navigateToNote.observe(viewLifecycleOwner, Observer { noteId ->
             noteId?.let {
                 val action = NotesFragmentDirections
-                    .actionNotesToNote(noteId)
+                    .actionMainToGame()
                 this.findNavController().navigate(action)
                 viewModel.onNoteNavigated()
             }

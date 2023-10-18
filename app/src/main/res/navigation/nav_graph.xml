@@ -10,27 +10,26 @@
         android:label="fragment_notes"
         tools:layout="@layout/fragment_notes">
     <action
-        android:id="@+id/action_notes_to_note"
+        android:id="@+id/action_main_to_game"
         app:destination="@id/Note" />
     <action
-        android:id="@+id/action_notes_to_dialog"
+        android:id="@+id/action_game_to_dialog"
         app:destination="@id/Dialog" />
     </fragment>
 
-
     <fragment
-        android:id="@+id/Note"
-        android:name="com.example.project6.EditNoteFragment"
-        android:label="fragment_note"
-        tools:layout="@layout/fragment_note" >
-        <argument
-            android:name="noteId"
-            app:argType="long" />
-    <action
-        android:id="@+id/action_note_to_notes"
-        app:destination="@id/Notes" />
-
+        android:id="@+id/Game"
+        android:name="com.example.project6.NotesFragment"
+        android:label="fragment_notes"
+        tools:layout="@layout/fragment_notes">
+        <action
+            android:id="@+id/action_main_to_game"
+            app:destination="@id/Note" />
+        <action
+            android:id="@+id/action_game_to_dialog"
+            app:destination="@id/Dialog" />
     </fragment>
+
 
 
     <fragment

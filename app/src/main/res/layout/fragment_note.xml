@@ -1,79 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Define the usability and orientation in Linear Layout first then go into Constraint Layout to arrange this UI components -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".EditNoteFragment">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <!-- This is where the "constraints" or "manual" fixes to the UI occur-->
+    <!-- Add a FrameLayout container for the fragments -->
 
-    <data>
-        <variable
-            name="viewModel"
-            type="com.example.project6.EditNoteViewModel" />
-    </data>
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="350dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+
+        <TextView
+            android:id="@+id/playerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/player"
+            android:textAlignment="center"
+            android:textSize="40dp"
+            android:autoSizeTextType="uniform"
+            android:textStyle="bold"
+            android:layout_marginBottom="60dp"
+
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/enterGuess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+
+            android:text="@string/enter"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="60dp"
+
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- A LinearLayout with the style buttonRow defines the buttons in order of appearance for their respective rows (as seen on the calc) -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0dp"
+            android:paddingTop="0dp">
+
+            <Button
+                android:id="@+id/buttonSubtractQs"
+                style="@style/buttonSub"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="1dp"
+                android:onClick="@{() -> NotesFragment.guess()}"
+
+
+                android:backgroundTint="@color/white"
+                android:text="@string/sub"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="50sp"
+                app:cornerRadius="3dp" />
+
+            <TextView
+                android:id="@+id/QsText"
+                style="@style/buttonSub"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_margin="1dp"
+
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text=" "
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:cornerRadius="3dp" />
+
+            <Button
+                android:id="@+id/buttonAddQs"
+                style="@style/buttonPlus"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="1dp"
+
+
+                android:backgroundTint="@color/white"
+                android:text="@string/add"
+                android:onClick="@{() -> viewModel.add()}"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="50sp"
+                app:cornerRadius="3dp" />
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="100dp"
+
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="4dp">
+            <!-- this will be TOP LEFT button seen in the TOP row-->
+            <!-- the radius, margin, and displayed text is hardcoded here as well (values from pdf) -->
+            <Button
+                android:id="@+id/buttonOk"
+                style="@style/buttonOK"
+                android:layout_height="50dp"
+                android:layout_width="300dp"
+                android:layout_margin="1dp"
+
+                android:layout_marginTop="200dp"
+                android:text="@string/ok"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:textSize="25sp"
+                android:textAlignment="center"
+                android:background="@drawable/button_border"
+                app:cornerRadius="3dp" />
+
+        </LinearLayout>
+    </FrameLayout>
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
-        <!-- Title EditText -->
-        <EditText
-            android:id="@+id/titleEditText"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:hint="@string/title"
-            android:text="@={viewModel.title}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" />
+        <TextView
+            android:id="@+id/numOfAttempts"
+            style="@style/buttonSub"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="30dp"
 
-        <!-- Body EditText -->
-        <EditText
-            android:id="@+id/bodyEditText"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:hint="@string/body"
-            android:text="@={viewModel.body}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleEditText"
-            app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
-            app:layout_constraintHorizontal_bias="0.5" />
+            android:="40dp"
+            android:gravity="start|center_horizontal"
+            android:text="@string/numOfAttempt"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:cornerRadius="3dp" />
 
-        <!-- Button Layout -->
-        <LinearLayout
-            android:id="@+id/buttonLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5">
 
-            <!-- Back Button -->
-            <Button
-                android:layout_width="180dp"
-                android:layout_height="50dp"
-                android:text="@string/back"
-                android:textSize="20sp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="5dp"
-                app:cornerRadius="7dp"
-                tools:ignore="RtlCompat"
-                android:onClick="@{() -> viewModel.dontSaveNote()}" />
+    </FrameLayout>
+</LinearLayout>
 
-            <!-- Save Button -->
-            <Button
-                android:layout_width="180dp"
-                android:layout_height="50dp"
-                android:text="@string/save"
-                android:textSize="20sp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
-                app:cornerRadius="7dp"
-                tools:ignore="RtlCompat"
-                android:onClick="@{() -> viewModel.saveNote()}" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
