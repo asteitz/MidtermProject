@@ -1,32 +1,19 @@
-# Project_06 - Notes App
-<span style="font-size: smaller;"><strong>Ashley Steitz and Jacob Fritz worked on this as partners</strong></span>
+# Midterm Project - Game App
+<span style="font-size: smaller;"><strong>Ashley Steitz is the Author of this project</strong></span>
 
 ---
 <span style="font-size: smaller;"><strong> Description </strong> </span>
-In our efforts to complete Project 05 we implemented an interactive Ui (User Interface) that allows the user to select a language and translate into one of the 3 options.
+In my effort to complete the Midterm Project, I implemented an interactive Ui (User Interface) that allows the user to select a language and translate into one of the 3 options.
 
 This app allows for a user to:
-- Create a new note
-- Edit a previous Note
-- Delete an Existing Note
+- Select a Game
+- Look at the updating scoreboard
+- And looking at the leader board
 
 To begin we integrated SQL into our data handling to store our user entries. We used a recycler view to store the notes and display them on the main note page (screen) 
 and it allows for users to scroll and view all posted notes without fear of losing the content when it goes off the page!
 <br>
 <br>
-To begin a user is prompted to "Add a Note" at the bottom  of the main screen where they are taken to the next fragment, prompting for a Note Title and Note Body.
-After the user enters both they have the option to go "BACK" to the main page or "SAVE". If "SAVE" is pressed, then their note title and bosy are inserted into the database.
-If they select back, then their note is not saved and they will return back to the main page and will _not_ see their note present.
-<br>
-<br>
-When a user clicks onto the note title then the screen is brought up with their their previous body, allowing them to make edits to the
-previously held data in that note. They need to select the save button to save their modified (or newly created note), where their changes are enacted into their note using the "Update" call to the database.
-If the back button is pressed then their changes are not saved and they are brought back to the main screen.
-<br>
-<br>
-On the main screen after a note is created, we see the title and a button with a red "X", this is a delete button and if this is pressed the user is greeted by a dialog that prompts
-them to select "YES" or "NO", confirming or denying their selection to delete their note. If they delete the note the note title and body are deleted from the data base. If "NO" is selected,
-then nothing happens to the database.
 
 
 
@@ -65,15 +52,12 @@ GIF created with [CloudConvert](https://cloudconvert.com/).
 
 ## Notes
 UI Challenges:
-- Integrating a recycler View into the UI for the main notes page
-- Adding in a constraint layout to keep the buttons in place when the user is typing
-- Adding function calls inside the xml files
+- Integrating a recycler View into the UI for the main
+- Adding in the data from the buttons
 
 Backend Challenges:
-- Difficult time with the gradle files and versions not being compatible
-- Struggled integrating the SQL database into the calls when a button is pressed
-- Working with an adapter to communicate between the view model and the database
-- Debugging an issue where our value wasn't being stored in our table despite calling insert to our database
+- I ran out of time but linking the aspects of other projects into one
+- I struggled connecting them with all the passing of data
 
 ## License
 
